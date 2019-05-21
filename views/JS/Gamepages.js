@@ -63,7 +63,10 @@ class Dungeon extends React.Component{
             gold: this.props.player.gold,
             ehp: this.enemy.hp,
             kills: 0,
-            rdnum: 0
+            rdnum: 0,
+            difficulty:1,
+            bg:"path",
+            enemyPhoto:"url"
         };
     }
     updateEHPbar(){
@@ -108,7 +111,7 @@ class Dungeon extends React.Component{
                                 <div id={'EHit'} className={"Ehit"}/>
                             </div>
                         </div>
-                        <img src={'../Game Assets/Enemys/enemy'+this.state.kills+'.png'} className={"enemyPhoto"} onClick={this.props.player.attack.bind(this.props.player,this.state.enemy)}/>
+                        <img src={'../Game Assets/Enemys/enemy'+this.state.difficulty+this.state.enemyPhoto+'.png'} className={"enemyPhoto"} onClick={this.props.player.attack.bind(this.props.player,this.state.enemy)}/>
                     </div>
                 </div>
                 <div className={'PlayerArea'}>
@@ -452,6 +455,7 @@ class Leaderboard extends React.Component{
                 return (
                     <div id={'message'}>
                         <h1>Recent Runs</h1>
+                        <button onClick={this.changeGlobal.bind(this)}>Global</button>
                         <div id={'scorebox'}>
                             <table id={'scores'}>
                                 <tbody>
@@ -459,7 +463,6 @@ class Leaderboard extends React.Component{
                                 </tbody>
                             </table>
                         </div>
-                        <button onClick={this.changeGlobal.bind(this)}>Global</button>
                         <button onClick={this.removeMessage.bind(this)}>Close Window</button>
                     </div>
                 )
